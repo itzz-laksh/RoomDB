@@ -17,7 +17,9 @@ class NoteAdapter(private val notes: ArrayList<Note>, private val onItemClick: (
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textViewNoteItem: TextView = itemView.findViewById(R.id.textViewNoteItem)
+        val textViewNoteItemTitle: TextView = itemView.findViewById(R.id.textViewNoteItemTitle)
+        val textViewNoteItemDesc: TextView = itemView.findViewById(R.id.textViewNoteItemDesc)
+        val textViewNoteItemPriority: TextView = itemView.findViewById(R.id.textViewNoteItemPriority)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -40,9 +42,10 @@ class NoteAdapter(private val notes: ArrayList<Note>, private val onItemClick: (
         }
 
         // set texts dynamically
-        holder.textViewNoteItem.text =
-            Html.fromHtml(
-                "Title: ${currentNote.title}<br>Description: ${currentNote.description}<br>Priority: $priorityHtml",
+        holder.textViewNoteItemTitle.text = "Title: ${currentNote.title}"
+        holder.textViewNoteItemDesc.text = "Description: ${currentNote.description}"
+        holder.textViewNoteItemPriority.text =
+            Html.fromHtml("Priority: $priorityHtml",
                 Html.FROM_HTML_MODE_LEGACY
             )
 

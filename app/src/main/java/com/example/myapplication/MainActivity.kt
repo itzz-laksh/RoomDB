@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.myapplication.Model.Note
 import com.example.myapplication.ViewModel.NoteViewModel
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -28,11 +29,14 @@ class MainActivity : AppCompatActivity() {
         //initialize the viewModel
         noteViewModel = NoteViewModel()
 
+        setBackgroundView()
+
+
         //set Adapter For Priority Spinner
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.priority_levels,
-            android.R.layout.simple_spinner_item
+            R.layout.custom_spinner_item
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerPriority.adapter = adapter
@@ -85,6 +89,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun setBackgroundView() {
+        //setView
+        Glide.with(this)
+            .load(R.drawable.background)
+            .into(binding.imageView);
     }
 
     // validate the checks for user to fill all the details

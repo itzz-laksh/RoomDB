@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.Adapter.NoteAdapter
 import com.example.myapplication.Model.Note
@@ -30,7 +31,7 @@ class AllNotesActivity : AppCompatActivity() {
             openUpdateNoteActivity(note)
         }
         binding.recyclerViewNotes.adapter = noteAdapter
-        binding.recyclerViewNotes.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewNotes.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
 
         //initialize viewModel
         noteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
